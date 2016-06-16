@@ -1,0 +1,189 @@
+---
+- name: Weapon and Shield
+  require:
+    race:
+      size_category: medium
+    primary:
+      type: melee_weapon
+      size_category:
+        lteq: medium
+    secondary:
+      type: shield
+  effect: {}
+- name: Two-Handed Weapon
+  require:
+    race:
+      size_category: medium
+    primary:
+      type: melee_weapon
+      size_category: large
+    secondary:
+      type: nothing
+  effect: {}
+- name: One-handed Weapon only
+  require:
+    race:
+      size_category: medium
+    primary:
+      type: melee_weapon
+      size_category:
+        lteq: medium
+    secondary:
+      type: nothing
+  effect:
+    speed: -1
+- name: One handed weapon, used two-handed
+  require:
+    race:
+      size_category: medium
+    primary:
+      type: melee_weapon
+      size_category: medium
+    secondary:
+      type: nothing
+  effect:
+    speed: +2
+    damage: +3
+- name: Two one-handed weapons, defending with secondary weapon
+  require:
+    race:
+      size_category: medium
+    primary:
+      type: melee_weapon
+      size_category: 
+        lteq: medium
+    secondary:
+      type: melee_weapon
+      size_category:
+        lteq: medium
+  effect: {}
+- name: Shield only
+  require:
+    primary:
+      name: 'Bare-handed (fists)'
+    secondary:
+      type: shield
+  effect:
+    defense: +1
+- name: Shield only
+  require:
+    primary:
+      type: shield
+    secondary:
+      type: nothing
+  effect:
+    defense: +1
+- name: Two shields only
+  require:
+    primary:
+      type: shield
+    secondary:
+      type: shield
+  effect: {}
+
+# Variants for small races
+- name: Weapon and Shield
+  require:
+    race:
+      size_category: small
+    primary:
+      type: melee_weapon
+      size_category: small
+    secondary:
+      type: shield
+  effect: {}
+- name: Two-Handed Weapon
+  require:
+    race:
+      size_category: small
+    primary:
+      type: melee_weapon
+      size_category: medium
+    secondary:
+      type: nothing
+  effect:
+    speed: +2
+- name: One-handed Weapon only
+  require:
+    race:
+      size_category: small
+    primary:
+      type: melee_weapon
+      size_category: small
+    secondary:
+      type: nothing
+  effect:
+    speed: -1
+- name: One handed weapon, used two-handed
+  require:
+    race:
+      size_category: small
+    primary:
+      type: melee_weapon
+      size_category: small
+    secondary:
+      type: nothing
+  effect:
+    speed: +2
+    damage: +3
+- name: Two one-handed weapons, defending with secondary weapon
+  require:
+    race:
+      size_category: small
+    primary:
+      type: melee_weapon
+      size_category: small
+    secondary:
+      type: melee_weapon
+      size_category: small
+  effect: {}
+
+  # Variants for large races
+- name: Weapon and Shield
+  require:
+    race:
+      size_category: large
+    primary:
+      type: melee_weapon
+      size_category:
+        lteq: large
+    secondary:
+      type: shield
+  effect: {}
+- name: One-handed Weapon only
+  require:
+    race:
+      size_category: large
+    primary:
+      type: melee_weapon
+      size_category:
+        lteq: large
+    secondary:
+      type: nothing
+  effect:
+    speed: -1
+- name: One handed weapon, used two-handed
+  require:
+    race:
+      size_category: large
+    primary:
+      type: melee_weapon
+      size_category: large
+    secondary:
+      type: nothing
+  effect:
+    speed: +2
+    damage: +3
+- name: Two one-handed weapons, defending with secondary weapon
+  require:
+    race:
+      size_category: large
+    primary:
+      type: melee_weapon
+      size_category:
+        lteq: large
+    secondary:
+      type: melee_weapon
+      size_category:
+        lteq: large
+  effect: {}

@@ -1,0 +1,40 @@
+name,str,damage,shield_damage,speed,jab,size_category,reach
+Battle Axe,10,4d3p,3d3p,12,,medium,3
+Hand Axe,6,d4p+d6p,d6p,8,,small,1.5
+Bare-handed,0,(d4p-2)+(d4p-2),0,10,,small,1
+Club,5,d6p+d4p,d6p,10,,medium,2.5
+Dagger,4,2d4p,0,7,5,small,1
+Flail,9,2d8p,d8p,13,,medium,4
+Horseman’s Flail,7,d4p+d6p,d6p,11,,small,2
+Knife,3,d6p,0,7,,small,1
+Lance,11,2d8p,d8p,12,,large,10
+Mace,10,d6p+d8p,d8p,11,,medium,2
+Horseman’s Mace,8,2d6p,d6p,10,,medium,1.5
+Morning Star,9,2d8p,d8p,11,,medium,3
+Military Pick,10,3d4p,2d4p,12,,medium,3
+Horseman's Pick,8,d4p+d6p,d6p,8,,small,1.5
+Scourge,4,2d4p,0,9,,small,1.5
+Scythe,10,2d6p+3,d6p,15,,large,4.5
+Staff,7,2d4p+3,d4p,13,,large,8
+Broadsword,10,2d6p+d3p,d6p+d3p,11,,medium,3.25
+Great sword,10,d8p+d10p+3,d10p+3,12,9,large,4.5
+Longsword,8,2d8p,d8p,10,8,medium,3.5
+Sabre,7,d6p+d8p,d6p,8,,medium,3
+Scimitar,8,2d8p,d8p,9,,medium,3
+Short sword,6,2d6p,lower of 2d6p,8,7,small,2
+Two-Handed sword,12,2d12p+3,d12p+3,16,,large,6
+Warhammer,9,2d6p,d6p,8,,small,1.5
+Great Warhammer,12,d8p+d10p,d10p,12,,medium,2.5
+
+Bardiche,9,4d4p+3,2d4p+3,14,,large,5
+Bec de Corbin,9,2d6p+3,lower of 2d6p,14,10,large,6
+Bill-Guisarme,9,4d4p+3,2d4p+3,15,11,large,8
+Fauchard,9,2d6p+3,d6p+3,13,8,large,8
+Fauchard-Fork,9,2d8p-3,lower of 2d6p,13,9,large,8
+Glaive,9,5d4p+3,2d6p+3,13,9,large,8
+Halberd,10,2d10p+3,d10p+3,14,12,large,7
+Pike,10,2d6p+3,lower of 2d6p+3,18,14,large,18
+Short Spear,5,d4p+d6p,lower of d6p& d4p,12,8,medium,5
+Spear,9,2d5p+3,lower of 2d6,12,8,large,13
+Trident,9,d6p+d8p+3,lower of d8p & d6p,12,8,large,6
+

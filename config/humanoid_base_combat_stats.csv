@@ -1,0 +1,56 @@
+name,initiative,speed,attack,defense,damage,dr,size_category,reach,movement,hp,top_save,tenacity,epv
+Bugbear,-1,-1,7,2,4,3,large,1,10,32+3d8,8,Steady,175
+Bugbear Leader,-2,-1,8,4,5,3,large,1,10,48+d8,9,Brave,280
+Bugbear Chief,-2,-1,9,6,6,3,large,1,10,56+d8,9,Brave,425
+Dwarf,3,-1,4,3,1,0,medium,-1,5,33+1d10,7,Brave,84
+Elf,0,-1,5,5,0,0,medium,-1,10,21+2d10,4,Brave,100
+Gnole,3,-2,5,-1,3,2,large,1,15,30+2d8,7,Brave,122
+Gnole Leader,1,-2,6,0,4,2,large,1,15,46,8,Fearless,160
+Gnole Praetorian,-1,-3,7,2,5,2,large,1,15,46+d8,8,Fearless,215
+Gnole Clan Chief,-1,-3,7,2,5,2,large,1,15,54,8,Fearless,215
+Gnome,2,0,3,7,-1,0,small,-1,5,20+1d8,5,Steady,42
+Goblin,3,0,3,4,-1,0,small,-1,5,17+1d6,6,Nervous,22
+Goblin Sergeant,2,0,4,6,0,0,small,-1,5,23,6,Steady,32
+Goblin Captain,1,-1,5,7,1,0,small,-1,5,23+d8,6,Steady,55
+Goblin Sub-Chief,0,-2,6,7,2,0,medium,0,10,23+2d8,7,Brave,90
+Goblin Chief,-2,-2,7,5,4,0,medium,0,10,28+3d8,7,Brave,170
+Grel,0,-3,6,5,3,0,medium,0,10,28+2d10,6,Fearless,140
+Halfling,1,0,1,6,-2,0,small,-1,5,17+1d8,6,Steady,20
+Hobgoblin,1,-1,5,2,1,0,medium,0,10,22+1d10,6,Brave,67
+Hobgoblin Sergeant,1,-1,5,2,1,0,medium,0,10,32,6,Brave,80
+Hobgoblin Lieutenant,-1,-2,6,4,2,0,medium,0,10,32+d10,6,Fearless,121
+Hobgoblin Captain,-1,-3,7,5,3,0,medium,0,10,32+2d10,7,Fearless,188
+Hobgoblin “Kruk”,-2,-4,8,6,4,0,medium,0,10,32+3d10,7,Fearless,300
+Human Sedentary,4,+2,-1,-2,-4,0,medium,0,10,18+1d4,4,Cowardly,5
+Human Merchant,3,0,0,0,0,0,medium,0,10,21+1d6,5,Nervous,20
+Human Laborer,5,0,0,0,+2,0,medium,0,10,23+1d8,7,Steady,25
+Human Man-at-arms,3,0,1,1,1,0,medium,0,10,24+1d8,7,Steady,30
+Human Berserker,4,-1,+2,+3,+2,0,medium,0,10,25+d10,9,Brave,67
+Human Brigand,2,0,2,3,0,0,medium,0,10,21+1d6,5,Nervous,34
+Kobold,3,-1,2,5,-3,1,small,-1,5,13+d4,4,Nervous,17
+Kobold Pack Leader,2,-1,2,6,-1,1,small,-1,5,15+d6,5,Steady,30
+Kobold Alpha Male,2,-1,4,5,0,1,medium,0,7.5,20+d8,6,Brave,50
+Kobold AlphaPlus Male,1,-2,5,6,3,2,medium,0,7.5,26+2d8,7,Brave,150
+Lizard Man,1,-2,3,0,2,2,medium,0,10,21+2d8,6,Nervous,45
+Lizard Man Warrior Leader,1,-2,3,0,2,2,medium,0,10,37,6,Steady,36
+Lizard Man Warband Leader,0,-2,4,1,3,2,medium,0,10,37+d8,6,Steady,67
+Lizard Man Sub-Chief,0,-3,5,2,4,2,medium,0,10,37+2d8,6,Brave,150
+Lizard Man Chieftain,-1,-4,6,3,5,2,medium,0,10,37+3d8,6,Brave,200
+Orc,4,0,3,-1,2,0,medium,0,10,23+1d8,6,Steady,34
+Orc Leader,4,-1,3,0,2,0,medium,0,10,31,6,Nervous,37
+Orc Warband Leader,2,-2,4,2,3,0,medium,0,10,31+d8,7,Steady,50
+Orc Sub-Chief,2,-3,5,3,4,0,medium,0,10,31+2d8,7,Steady,125
+Orc Chieftain,1,-4,6,4,5,0,medium,0,10,31+3d8,8,Brave,170
+Black Orc Leader,3,-2,5,2,4,0,medium,0,10,31,7,Fearless,85
+Black Orc Warband Leader,1,-3,6,4,5,0,medium,0,10,31+d8,8,Fearless,125
+Black Orc Sub-Chief,1,-2,7,5,6,0,medium,0,10,31+2d8,8,Fearless,165
+Black Orc Chieftain,0,-5,8,6,7,0,medium,0,10,31+3d8,9,Fearless,375
+Skeleton,0,0,1,4,-1,0,medium,0,10,27+1d8,,Fearless,67
+Tröglodyte,1,-2,3,0,2,2,medium,0,10,20+2d8,6,Steady,60
+Tröglodyte Leader,0,-2,4,1,3,2,medium,0,10,36,6,Steady,95
+Tröglodyte Warband Leader,-1,-2,5,2,4,2,medium,0,10,36+d8,7,Steady,133
+Tröglodyte Sub-Chief,-1,-4,6,3,5,2,medium,0,10,36+2d8,8,Fearless,165
+Tröglodyte Chieftain,-3,-2,8,4,2,2,medium,0,10,36,6,Steady,417
+
+
+

@@ -1,16 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'hackmaster/armory/version'
+require 'ravager/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "hackmaster-armory"
-  spec.version       = Hackmaster::Armory::VERSION
+  spec.name          = "ravager"
+  spec.version       = Ravager::VERSION
   spec.authors       = ["Jo-Herman Haugholt"]
   spec.email         = ["johannes@huyderman.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
+  spec.summary       = "App to generate equipped Hackmaster monsters"
   spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
@@ -27,6 +26,12 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
+  spec.add_runtime_dependency 'tty', '~> 0.5.0'
+  spec.add_runtime_dependency 'dry-types', '~> 0.7.0'
+  spec.add_runtime_dependency 'inflecto', '~> 0.0.2'
+
   spec.add_development_dependency "bundler", "~> 1.12"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "awesome_print", '~> 1.6'
+  spec.add_development_dependency "pry", '~> 0.10.3'
 end

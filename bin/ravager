@@ -1,0 +1,155 @@
+#!/usr/bin/env ruby
+
+require 'ravager'
+require 'csv'
+require 'yaml'
+require 'dry-types'
+require 'tty'
+require 'tty-prompt'
+require 'pastel'
+require 'awesome_print'
+
+require 'ravager/stat_block'
+require 'ravager/race'
+require 'ravager/equipment'
+require 'ravager/fighting_style'
+
+include Ravager
+
+def read_csv(filename)
+  rows = CSV.read File.expand_path("../config/#{filename}.csv", __dir__),
+                  headers:           :first_row,
+                  header_converters: :symbol,
+                  skip_blanks:       true
+  rows.by_row.map(&:to_h)
+end
+
+base_stats   = read_csv('humanoid_base_combat_stats').map { |row| Race.new(row) }
+armor_stats  = read_csv('armor').map { |row| Equipment::Armor.new(row) }
+weapon_stats = read_csv('melee_weapons').map { |row| Equipment::MeleeWeapon.new(row) }
+shield_stats = read_csv('shields').map { |row| Equipment::Shield.new(row) }
+
+fighting_styles = YAML.load_file(File.expand_path('../config/fighting_styles.yml', __dir__)).map { |item| FightingStyle.new(item) }
+
+prompt = TTY::Prompt.new
+pastel = Pastel.new
+
+prompt.say pastel.italic <<~TEXT
+  Never rely on spurious anecdotes and the boasting of old men!
+TEXT
+
+prompt.say pastel.bold('— The "Ravager" on Gnoles')
+puts
+
+def choose(prompt, arr, text)
+  choices = arr.map(&:name).each_with_index.to_a.to_h
+  return arr[choices.values.first] if choices.length == 1
+
+  choice  = prompt.enum_select(text, choices)
+  arr[choice]
+end
+
+race = choose(prompt, base_stats, 'Type of humanoid:')
+
+fighting_styles.select! do |style|
+  require = style.require[:race]
+  require.nil? || require.call(race).success?
+end
+
+armor = choose(prompt, armor_stats, 'Armor:')
+
+primary_choices = weapon_stats + shield_stats
+primary_choices.select! do |choice|
+  fighting_styles.any? do |style|
+    require = style.require[:primary]
+    require.nil? || require.call(choice).success?
+  end
+end
+primary = choose(prompt, primary_choices, 'Primary Hand:')
+
+fighting_styles.select! do |style|
+  require = style.require[:primary]
+  require.nil? || require.call(primary).success?
+end
+
+secondary_choices = [Equipment::Nothing.instance] + shield_stats + weapon_stats
+secondary_choices.select! do |choice|
+  fighting_styles.any? do |style|
+    require = style.require[:secondary]
+    require.nil? || require.call(choice).success?
+  end
+end
+
+secondary = choose(prompt, secondary_choices, 'Off-hand:')
+
+fighting_styles.select! do |style|
+  require = style.require[:secondary]
+  require.nil? || require.call(secondary).success?
+end
+
+style = choose(prompt, fighting_styles, 'Fighting Style:')
+
+def pretty_join(*array, seperator: ', ', last_seperator: ' and ')
+  return '' if array.length == 0
+  return array[0] if array.length == 1
+
+  elems     = array.dup
+  last_elem = elems.pop
+
+  "#{elems.join(seperator)}#{last_seperator}#{last_elem}"
+end
+
+equipment = []
+equipment << primary.name.downcase
+equipment << secondary.name.downcase unless secondary.is_a? Equipment::Nothing
+equipment << armor.name.downcase
+
+equipment_str = pretty_join(*equipment)
+name          = "#{race.name} with #{equipment_str}"
+name          = prompt.ask('Name: ', default: name)
+
+bonus = ->(number) { number < 0 ? "−#{number.abs}" : "+#{number}" }
+
+FRACTIONS = {
+    0    => '',
+    1r/8 => '⅛',
+    2r/8 => '¼',
+    3r/8 => '⅜',
+    4r/8 => '½',
+    5r/8 => '⅝',
+    6r/8 => '¾',
+    7r/8 => '⅞'
+}
+
+fraction = lambda do |number|
+  rational = (number * 8).round/8r
+  integer  = rational.to_i
+
+  "#{integer}#{FRACTIONS[rational - integer]}"
+end
+
+stats = []
+stats << "HP #{race.hp}"
+stats << "Init #{race.initiative + armor.initiative + style.effect[:initiative].to_i}"
+
+if primary.is_a?(Equipment::MeleeWeapon)
+  stats << "Spd #{race.speed + armor.speed + primary.speed + style.effect[:speed].to_i}"
+  stats << "Rch #{fraction[primary.reach + race.reach]}’"
+  stats << "Att #{bonus[race.attack]}"
+  stats << "Dmg #{"#{primary.damage}#{bonus[race.damage + style.effect[:damage].to_i]}"}"
+end
+
+defense  = race.defense + armor.defense + style.effect[:defense].to_i
+defense  += primary.defense if primary.is_a? Equipment::Shield
+defense  += secondary.defense if secondary.is_a? Equipment::Shield
+stats << "Def #{bonus[defense]}"
+stats << "DR #{race.dr + armor.dr}"
+stats << "ToP X/#{race.top_save || 'N/A'}"
+stats << "Jog #{fraction[race.movement * armor.movement]} feet/second"
+stats << "Tenacity: #{race.tenacity || 'N/A'}"
+stats << "Size #{race.size_category}"
+
+prompt.say "#{pastel.bold(name)} (#{race.epv} EP)"
+prompt.say stats.join('; ')
+
+puts
